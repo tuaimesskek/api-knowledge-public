@@ -11,11 +11,11 @@
 | Метод | Для чего | Как указать объект и данные | Что меняет / возвращает |
 |---|---|---|---|
 | `GET`<br>`/api/v1/orders (заказчик)` | Поиск заявки | В query: `page`, `batchSize`, `state`, `category`, `templates`, …. Заголовок: `ZakupayToken`. | Возвращает: `count`, `orders`. |
-| `POST`<br>`/api/v1/orders (заказчик)` | Создание заявки | В query: параметры формата ответа/дат. В теле: `name`, `additionalDataJson`, `project`, `state`, `consignee`, `comment`, …. Заголовок: `ZakupayToken`. | Выполняет действие «создание заявки». Данные: Название заявки (`name`); `additionalDataJson`; `project`; `state`; `consignee`; …. Ответ: `result`, `order`. |
-| `PATCH`<br>`/api/v1/orders (заказчик)` | Редактирование заявки | В теле: `id`, `name`, `project`, `state`, `comment`, `externalId`, …. Заголовок: `ZakupayToken`. | Обновляет: ID заявки (`id`); Название заявки (`name`); `project`; `state`; Комментарий к заявке (`comment`); …. Ответ: `result`, `order`. |
+| `POST`<br>`/api/v1/orders (заказчик)` | Создание заявки | В query: параметры формата ответа/дат. В теле: `name`, `additionalDataJson`, `project`, `state`, `consignee`, `comment`, …. Заголовок: `ZakupayToken`. | Выполняет действие «создание заявки». Данные: Название заявки (`name`); Массив данных в котором обязательно указание значения nameCell1… (`additionalDataJson`); Проект заявки (`project`); Статус заявки (`state`); `consignee`; …. Ответ: `result`, `order`. |
+| `PATCH`<br>`/api/v1/orders (заказчик)` | Редактирование заявки | В теле: `id`, `name`, `project`, `state`, `comment`, `externalId`, …. Заголовок: `ZakupayToken`. | Обновляет: ID заявки (`id`); Название заявки (`name`); `project`; Статус заявки (`state`); Комментарий к заявке (`comment`); …. Ответ: `result`, `order`. |
 | `GET`<br>`/api/v1/orders (поставщик)` | Поиск заявки | В query: `company`, `category`, `status`, `count`, `creationDateFrom`, …. Заголовок: `ZakupayToken`. | Возвращает: `count`, `orders`. |
-| `GET`<br>`/api/v1/orders/{id}/offer-compare-report` | Получение файла сравнения счетов | В URL: `id` — ID объекта. Заголовок: `ZakupayToken`. | Возвращает: `string (поля в Swagger не раскрыты)`. |
-| `DELETE`<br>`/api/v1/orders/{id}` | Удаление заявки | В URL: `id` — ID объекта. Заголовок: `ZakupayToken`. | Удаляет указанный объект. Ответ: `string (поля в Swagger не раскрыты)`. |
+| `GET`<br>`/api/v1/orders/{id}/offer-compare-report` | Получение файла сравнения счетов | В URL: `id` — ID заявки. Заголовок: `ZakupayToken`. | Возвращает: `string (поля в Swagger не раскрыты)`. |
+| `DELETE`<br>`/api/v1/orders/{id}` | Удаление заявки | В URL: `id` — ID заявки. Заголовок: `ZakupayToken`. | Удаляет указанный объект. Ответ: `string (поля в Swagger не раскрыты)`. |
 
 Подробные параметры, поля, ответы и ошибки для каждого метода — ниже.
 
