@@ -6,6 +6,19 @@
 
 - `openapi/swagger-core.yaml`
 
+## Кратко по методам
+
+| Метод | Для чего | Как указать объект и данные | Что меняет / возвращает |
+|---|---|---|---|
+| `GET`<br>`/api/v1/company` | Поиск компаний | В query: `id`, `name`, `shortName`, `inn`, `kpp`, …. Заголовок: `ZakupayToken`. | Возвращает: `result`, `data`. |
+| `GET`<br>`/api/v1/company/{id}/requisites` | Выгрузка реквизитов компании | В URL: `id` — ID объекта. Заголовок: `ZakupayToken`. | Возвращает: `string (поля в Swagger не раскрыты)`. |
+| `GET`<br>`/api/v1/company/documents` | Получение информации по документам компаний | В query: `page`, `pageSize`, `companyInn`, …. | Возвращает: `result`, `data`. |
+| `POST`<br>`/api/v1/company/documents` | Создание/обновление документов компании | В query: параметры формата ответа/дат. В теле: `id`, `documents`. Заголовок: `ZakupayToken`. | Выполняет действие «создание/обновление документов компании». Данные: `id`; Список документов, которые будут сохранены (`documents`). Ответ: `result`, `company`. |
+| `POST`<br>`/api/v1/company/tag` | Добавить/отменить ярлык на компанию | В query: параметры формата ответа/дат. В теле: `inn`, `kpp`, `tagId`, `isRemove`. Заголовок: `ZakupayToken`. | Выполняет действие «добавить/отменить ярлык на компанию». Данные: ИНН компании (`inn`); КПП компании (не узказывается при отсутствии) (`kpp`); ID тэга в системе (`tagId`); `isRemove`. Ответ: `result`. |
+| `GET`<br>`/api/v1/company/documents/{companyDocumentId}/specification` | Получить позиции спецификации документа компании | В URL: `companyDocumentId` — ID документа компании. В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `specification_items`. |
+
+Подробные параметры, поля, ответы и ошибки для каждого метода — ниже.
+
 ## `GET /api/v1/company`
 
 **Название в Swagger:** Поиск компаний.

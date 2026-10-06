@@ -6,6 +6,20 @@
 
 - `openapi/swagger-core.yaml`
 
+## Кратко по методам
+
+| Метод | Для чего | Как указать объект и данные | Что меняет / возвращает |
+|---|---|---|---|
+| `GET`<br>`/api/v1/spa/delivery/{id}/facekit` | Отправка доставки в FaceKit | В URL: `id` — ID объекта. | Выполняет действие «отправка доставки в facekit». Ответ: `id`. |
+| `GET`<br>`/api/v1/deliveries` | Получение данных реестра доставок | В query: `page`, `pageSize`, `ids`, `offerId`, `include`, …. | Возвращает: `count`, `totalCount`, `page`, `pageSize`, `pagesCount`, `deliveries`. |
+| `POST`<br>`/api/v1/deliveries/driver/feedback` | Отправка сообщения от водителя по доставке | В теле: `deliveryId`, `feedbackType`. Заголовок: `ZakupayToken`. | Выполняет действие «отправка сообщения от водителя по доставке». Данные: ID доставки (`deliveryId`); Тип сообещния (`feedbackType`). Ответ: структура успешного ответа не раскрыта. |
+| `PATCH`<br>`/api/v1/deliveries/action/accept` | Принятие доставки | В теле: `id`, `deliveryDate`, `deliveryItems`, `offerDocuments`. Заголовок: `ZakupayToken`. | Обновляет: Id принимаемой доставки (`id`); Дата принятия доставки (`deliveryDate`); `deliveryItems`; `offerDocuments`. Ответ: структура успешного ответа не раскрыта. |
+| `POST`<br>`/api/v1/deliveries/action/plan` | Планирование доставки | В теле: `transporter`, `plannedDate`, `plannedTransportationDate`, `plannedDeliveredDate`, `plannedDeliveredTime`, `plannedDeliveredDateLimit`, …. Заголовок: `ZakupayToken`. | Выполняет действие «планирование доставки». Данные: `transporter`; `plannedDate`; Дата "доставка запланирована на" (`plannedTransportationDate`); `plannedDeliveredDate`; Ориентировочное время доставки (`plannedDeliveredTime`); …. Ответ: структура успешного ответа не раскрыта. |
+| `PATCH`<br>`/deliveries/{id}` | Редактирование данных доставки | В URL: `id` — ID объекта. В query: `plannedDeliveredDate`, `plannedDeliveredTime`, `plannedDeliveredDateLimit`, `plannedDeliveredTimeLimit`, `carModel`, …. Заголовок: `ZakupayToken`. | Обновляет: редактирование данных доставки. Ответ: структура успешного ответа не раскрыта. |
+| `POST`<br>`/core/as-built-documentation/deliveries` | Получение исполнительной документации по доставке и доставленным позициям | В теле: `timestamp`, `page`, `pageSize`. Заголовок: `ZakupayToken`. | Выполняет действие «получение исполнительной документации по доставке и доставленным позициям». Данные: `timestamp`; Номер страницы (`page`); Размер страницы (`pageSize`). Ответ: структура успешного ответа не раскрыта. |
+
+Подробные параметры, поля, ответы и ошибки для каждого метода — ниже.
+
 ## `GET /api/v1/spa/delivery/{id}/facekit`
 
 **Название в Swagger:** Отправка доставки в FaceKit.

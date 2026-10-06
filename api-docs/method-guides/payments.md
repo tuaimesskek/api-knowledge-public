@@ -6,6 +6,17 @@
 
 - `openapi/swagger-core.yaml`
 
+## Кратко по методам
+
+| Метод | Для чего | Как указать объект и данные | Что меняет / возвращает |
+|---|---|---|---|
+| `GET`<br>`/api/v1/payments` | Получение списка платежей | В query: `page`, `pageSize`, `offerId`, `orderId`, `accepted`, …. | Возвращает: `result`, `count`, `page`, `pageSize`, `pagesCount`, `totalCount`, `payments`. |
+| `PUT`<br>`/api/v1/offers/{offerId}/payments/{offerPaymentId}` | Обновление платежа по счету | В URL: `offerId` — ID счёта; `offerPaymentId` — ID платежа. В query: параметры формата ответа/дат. В теле: `amount`, `amountInMainCurrency`, `date`, `number`. Заголовок: `ZakupayToken`. | Обновляет: `amount`; `amountInMainCurrency`; Фактическая дата выполнения платежа (`date`); `number`. Ответ: `result`, `offerPayment`. |
+| `DELETE`<br>`/api/v1/offers/{offerId}/payments/{offerPaymentId}` | Удаление платежа по счету | В URL: `offerId` — ID счёта; `offerPaymentId` — ID платежа. Заголовок: `ZakupayToken`. | Удаляет указанный объект. Ответ: `string (поля в Swagger не раскрыты)`. |
+| `POST`<br>`/api/v1/offer/{offerId}/payment-save` | Создание/редактирование платежа по счету | В URL: `offerId` — ID счёта. В теле: `id`, `amount`, `amountInMainCurrency`, `number`, `planPaymentDate`, `paymentDate`, …. Заголовок: `ZakupayToken`. | Выполняет действие «создание/редактирование платежа по счету». Данные: Идентификатор платежа (`id`); `amount`; `amountInMainCurrency`; Номер платёжки (`number`); Дата запланнированного платежа (`planPaymentDate`); …. Ответ: `result`, `offerPayment`. |
+
+Подробные параметры, поля, ответы и ошибки для каждого метода — ниже.
+
 ## `GET /api/v1/payments`
 
 **Название в Swagger:** Получение списка платежей.

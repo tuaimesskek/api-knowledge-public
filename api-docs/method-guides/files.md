@@ -6,6 +6,20 @@
 
 - `openapi/swagger-core.yaml`
 
+## Кратко по методам
+
+| Метод | Для чего | Как указать объект и данные | Что меняет / возвращает |
+|---|---|---|---|
+| `GET`<br>`/core/companies/files/{fileId}` | Получение файла документа компании | В URL: `fileId` — ID файла. Заголовок: `ZakupayToken`. | Возвращает: `file`. |
+| `POST`<br>`/core/files/upload` | Загрузка файла | В query: `type`, `async`, `base64`, …. В теле: `file`. Заголовок: `ZakupayToken`. | Выполняет действие «загрузка файла». Данные: `file`. Ответ: структура успешного ответа не раскрыта. |
+| `GET`<br>`/core/deliveries/{deliveryId}/files/{fileId}` | Получение файла доставки | В URL: `deliveryId` — ID доставки; `fileId` — ID файла. Заголовок: `ZakupayToken`. | Возвращает: `file`. |
+| `GET`<br>`/core/orders/{orderId}/files/{fileId}` | Получение файла заявкки | В URL: `orderId` — ID заявки; `fileId` — ID файла. Заголовок: `ZakupayToken`. | Возвращает: `file`. |
+| `GET`<br>`/api/v1/orders/download/{entityType}/{id}/{type}` | Получение файла заявки | В URL: `entityType` — тип сущности; `id` — ID объекта; `type` — значение `type`. Заголовок: `ZakupayToken`. | Возвращает: `file`. |
+| `GET`<br>`/api/v1/offers/files/{fileId}` | Получение файла счета | В URL: `fileId` — ID файла. Заголовок: `ZakupayToken`. | Возвращает: `file`. |
+| `GET`<br>`/core/offers/{offerId}/approvalSheet` | Получение файла листа согласования счета | В URL: `offerId` — ID счёта. Заголовок: `ZakupayToken`. | Возвращает: `file`. |
+
+Подробные параметры, поля, ответы и ошибки для каждого метода — ниже.
+
 ## `GET /core/companies/files/{fileId}`
 
 **Название в Swagger:** Получение файла документа компании.

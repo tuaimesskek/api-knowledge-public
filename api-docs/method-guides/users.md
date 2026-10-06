@@ -6,6 +6,14 @@
 
 - `openapi/swagger-core.yaml`
 
+## Кратко по методам
+
+| Метод | Для чего | Как указать объект и данные | Что меняет / возвращает |
+|---|---|---|---|
+| `POST`<br>`/api/v1/persons/createWithExternalId` | Создание пользователя с внешним ID | В query: параметры формата ответа/дат. В теле: `email`, `password`, `lastName`, `firstName`, `middleName`, `sex`, …. Заголовок: `ZakupayToken`. | Выполняет действие «создание пользователя с внешним id». Данные: `email`; `password`; `lastName`; `firstName`; `middleName`; …. Ответ: `result`. |
+
+Подробные параметры, поля, ответы и ошибки для каждого метода — ниже.
+
 ## `POST /api/v1/persons/createWithExternalId`
 
 **Название в Swagger:** Создание пользователя с внешним ID.

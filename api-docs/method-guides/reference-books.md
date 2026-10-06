@@ -7,6 +7,25 @@
 - `openapi/swagger-core.yaml`
 - `openapi/swagger-edi.yaml`
 
+## Кратко по методам
+
+| Метод | Для чего | Как указать объект и данные | Что меняет / возвращает |
+|---|---|---|---|
+| `GET`<br>`/api/v1/refbooks/good-positions` | Справочник товарной базы | В query: `id`, `externalId`, `page`, `limit`. Заголовок: `ZakupayToken`. | Возвращает: `id`, `name`, `category`, `creator`, `creationDate`, `unit`, `externalId`. |
+| `GET`<br>`/api/v1/refbooks/offerStates` | Справочник статусов счёта | В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `offerStates`. |
+| `GET`<br>`/api/v1/refbooks/employees/{inn}` | Список сотрудников по ИНН компании | В URL: `inn` — ИНН компании. В query: `fullName`. Заголовок: `ZakupayToken`. | Возвращает: `result`, `employees`. |
+| `GET`<br>`/api/v1/refbooks/colleagues` | Справочник коллег пользователя с учётом иерархии компаний | В query: `fullName`, …. Заголовок: `ZakupayToken`. | Возвращает: `result`, `colleagues`. |
+| `GET`<br>`/api/v1/refbooks/costItems` | Справочник статей затрат | В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `costItems`. |
+| `POST`<br>`/api/v1/refbooks/offerSuppliers/autocompleted` | Справочник поставщиков | В теле: `q`, `ids`. | Выполняет действие «справочник поставщиков». Данные: Строка поиска по названию (`q`); Список id для поиска компаний (`ids`). Ответ: `result`, `suppliers`. |
+| `GET`<br>`/api/v1/refbooks/projectTypes` | Справочник типов проектов | В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `projectTypes`. |
+| `GET`<br>`/api/v1/refbooks/documentTypes` | Справочник типов документов | В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `data`. |
+| `GET`<br>`/api/v1/icons` | Справочник иконок | В query: `order`, `offer`, `delivery`, …. Заголовок: `ZakupayToken`. | Возвращает: `result`, `icons`. |
+| `GET`<br>`/refbooks/ediStateSignatureStatuses` | Справочник статусов подписей документа в ЭДО | В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `signatureStatuses`. |
+| `GET`<br>`/refbooks/ediStateRevocationStatuses` | Справочник статусов аннулирования документа в ЭДО | В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `revocationStatuses`. |
+| `GET`<br>`/refbooks/ediStateResolutionStatuses` | Справочник статусов согласования документа в ЭДО | В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `resolutionStatuses`. |
+
+Подробные параметры, поля, ответы и ошибки для каждого метода — ниже.
+
 ## `GET /api/v1/refbooks/good-positions`
 
 **Название в Swagger:** Справочник товарной базы.

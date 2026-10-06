@@ -6,6 +6,24 @@
 
 - `openapi/swagger-core.yaml`
 
+## Кратко по методам
+
+| Метод | Для чего | Как указать объект и данные | Что меняет / возвращает |
+|---|---|---|---|
+| `POST`<br>`/api/v1/projects` | Создание проекта | В query: параметры формата ответа/дат. В теле: `name`, `externalId`, `cadastralNumber`, `description`, `type`, `template`, …. Заголовок: `ZakupayToken`. | Выполняет действие «создание проекта». Данные: Наименование проекта (`name`); Внешний идентификатор проекта (`externalId`); Кадастровый номер ЗУ проекта (`cadastralNumber`); Комментарий - описание проекта (`description`); Информация по типу проекта (`type`); …. Ответ: структура успешного ответа не раскрыта. |
+| `GET`<br>`/api/v1/projects` | Получение информации по проектам | В query: `page`, `pageSize`, `ids`, `include`, `excludedIds`, …. Заголовок: `ZakupayToken`. | Возвращает: `count`, `page`, `pageSize`, `pagesCount`, `projects`, `totalCount`. |
+| `GET`<br>`/api/v2/projects` | Получение информации по проектам (v2) | В query: `page`, `pageSize`, `name`, `title`, `showDeleted`, …. Заголовок: `ZakupayToken`. | Возвращает: `count`, `page`, `pageSize`, `pagesCount`, `projects`, `totalCount`. |
+| `GET`<br>`/api/v1/projects/{externalId}/externalId` | Получить проект по его внешнему ID | В URL: `externalId` — внешний ID. В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `project`. |
+| `GET`<br>`/api/v1/projects/{externalId}/externalId/budget` | Получение информации по активному бюджету проекта | В URL: `externalId` — внешний ID. В query: `getRests`, …. Заголовок: `ZakupayToken`. | Возвращает: `result`, `activeBudget`. |
+| `PATCH`<br>`/api/v1/projects/{projectId}/changeBudgetActivity` | Изменение активного бюджета на проекте | В URL: `projectId` — ID проекта. Заголовок: `ZakupayToken`. | Обновляет: изменение активного бюджета на проекте. Ответ: `result`. |
+| `GET`<br>`/api/v1/projects/{externalId}/externalId/budget/{budgetId}` | Получение информации по бюджету проекта | В URL: `externalId` — внешний ID; `budgetId` — ID бюджета. В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `budget`. |
+| `GET`<br>`/api/v1/projects/{projectId}/budget` | Получение информации по активному бюджету проекта | В URL: `projectId` — ID проекта. В query: `getRests`, …. Заголовок: `ZakupayToken`. | Возвращает: `result`, `activeBudget`. |
+| `GET`<br>`/api/v1/projects/{projectId}/budget/{budgetId}` | Получение информации по бюджету проекта | В URL: `projectId` — ID проекта; `budgetId` — ID бюджета. В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Возвращает: `result`, `budget`. |
+| `PUT`<br>`/api/v1/projects/{projectId}` | Обновление проекта | В URL: `projectId` — ID проекта. В query: параметры формата ответа/дат. В теле: `externalId`, `cadastralNumber`, `name`, `description`, `type`, `additionalDataJson`, …. Заголовок: `ZakupayToken`. | Обновляет: `externalId`; Кадастровый номер ЗУ проекта (`cadastralNumber`); Название проекта (`name`); Описание проекта (`description`); Информация по типу проекта (`type`); …. Ответ: `object (поля в Swagger не раскрыты)`. |
+| `DELETE`<br>`/api/v1/projects/{projectId}` | Деактивировать проект | В URL: `projectId` — ID проекта. В query: параметры формата ответа/дат. Заголовок: `ZakupayToken`. | Удаляет указанный объект. Ответ: `object (поля в Swagger не раскрыты)`. |
+
+Подробные параметры, поля, ответы и ошибки для каждого метода — ниже.
+
 ## `POST /api/v1/projects`
 
 **Название в Swagger:** Создание проекта.

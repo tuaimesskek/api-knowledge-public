@@ -6,6 +6,16 @@
 
 - `openapi/swagger-core.yaml`
 
+## Кратко по методам
+
+| Метод | Для чего | Как указать объект и данные | Что меняет / возвращает |
+|---|---|---|---|
+| `POST`<br>`/api/v1/nomenclatures` | Создание номенклатуры | В query: параметры формата ответа/дат. В теле: `name`, `externalId`, `category`, `unit`. Заголовок: `ZakupayToken`. | Выполняет действие «создание номенклатуры». Данные: Название номенклатуры. Обязательное поле (`name`); Внешний Id номенклатуры (`externalId`); Товарная категория (`category`); Единица измерения (`unit`). Ответ: `object (поля в Swagger не раскрыты)`. |
+| `PUT`<br>`/api/v1/nomenclatures/:id` | Редактирование номенклатуры по id | В query: параметры формата ответа/дат. В теле: `name`, `externalId`, `category`, `unit`, `deleted`, `additionalDataJson`. Заголовок: `ZakupayToken`. | Обновляет: Название номенклатуры. Обязательное поле (`name`); Внешний Id номенклатуры (`externalId`); Товарная категория (`category`); Единица измерения (`unit`); `deleted`; …. Ответ: `object (поля в Swagger не раскрыты)`. |
+| `PUT`<br>`/api/v1/nomenclatures/:id/externalId` | Редактирование номенклатуры по внешнему id | В query: параметры формата ответа/дат. В теле: `name`, `externalId`, `category`, `unit`, `deleted`, `additionalDataJson`. Заголовок: `ZakupayToken`. | Обновляет: Название номенклатуры. Обязательное поле (`name`); Внешний Id номенклатуры (`externalId`); Товарная категория (`category`); Единица измерения (`unit`); `deleted`; …. Ответ: `object (поля в Swagger не раскрыты)`. |
+
+Подробные параметры, поля, ответы и ошибки для каждого метода — ниже.
+
 ## `POST /api/v1/nomenclatures`
 
 **Название в Swagger:** Создание номенклатуры.
