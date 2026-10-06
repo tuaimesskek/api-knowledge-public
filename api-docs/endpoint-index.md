@@ -77,3 +77,5 @@
 | `POST` | `/api/v1/nomenclatures` | Создание номенклатуры | Номенклатура |
 | `PUT` | `/api/v1/nomenclatures/:id` | Редактирование номенклатуры по id | Номенклатура |
 | `PUT` | `/api/v1/nomenclatures/:id/externalId` | Редактирование номенклатуры по внешнему id | Номенклатура |
+
+Путеводитель по всем методам из основного API и ЭДО: [`all-methods-guide.md`](all-methods-guide.md). Подробная инструкция по сценариям платежей: [`payments-guide.md`](payments-guide.md).

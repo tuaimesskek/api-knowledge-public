@@ -2,6 +2,8 @@
 
 Полные параметры и схемы находятся в `openapi/swagger-edi.yaml`.
 
+Понятное описание методов: [`method-guides/edi.md`](method-guides/edi.md). Сводный путеводитель по основному API и ЭДО: [`all-methods-guide.md`](all-methods-guide.md).
+
 | Метод | Путь | Название | Теги |
 |---|---|---|---|
 | `GET` | `/v2/ediStates` | Получить реестр состояний ЭДО-документов | ЭДО |
