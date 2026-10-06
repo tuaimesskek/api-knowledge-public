@@ -77,3 +77,5 @@
 | `POST` | `/api/v1/nomenclatures` | Создание номенклатуры | Номенклатура |
 | `PUT` | `/api/v1/nomenclatures/:id` | Редактирование номенклатуры по id | Номенклатура |
 | `PUT` | `/api/v1/nomenclatures/:id/externalId` | Редактирование номенклатуры по внешнему id | Номенклатура |
+
+Подробное объяснение сценариев всех методов платежей: [`payments-guide.md`](payments-guide.md).
